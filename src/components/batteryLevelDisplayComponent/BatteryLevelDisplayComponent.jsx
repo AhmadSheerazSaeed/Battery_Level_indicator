@@ -12,45 +12,29 @@ const BatteryLevelDisplayComponent = () => {
       <div className={batteyLevelDisplayCSS.componentsWrapper}>
         {/* first module */}
         <BarChartReuseable
-          getRequestBatteryLevel={
-            "http://localhost:4000/api/moduleOnebatterylevel"
-          }
-          postRequestResetBatteryLevel={
-            "http://localhost:4000/api/moudleOneBatterystartcharging"
-          }
+          getRequestBatteryLevel={"/api/moduleOnebatterylevel"}
+          postRequestResetBatteryLevel={"/api/moudleOneBatterystartcharging"}
           moduleName={"MXTT-1"}
         />
 
         {/* second module */}
         <BarChartReuseable
-          getRequestBatteryLevel={
-            "http://localhost:4000/api/moduleTwobatterylevel"
-          }
-          postRequestResetBatteryLevel={
-            "http://localhost:4000/api/moudleTwoBatterystartcharging"
-          }
+          getRequestBatteryLevel={"/api/moduleTwobatterylevel"}
+          postRequestResetBatteryLevel={"/api/moudleTwoBatterystartcharging"}
           moduleName={"MXAA-2"}
         />
 
         {/* thirdt module */}
         <BarChartReuseable
-          getRequestBatteryLevel={
-            "http://localhost:4000/api/modulethreebatterylevel"
-          }
-          postRequestResetBatteryLevel={
-            "http://localhost:4000/api/moudleThreeBatterystartcharging"
-          }
+          getRequestBatteryLevel={"/api/modulethreebatterylevel"}
+          postRequestResetBatteryLevel={"/api/moudleThreeBatterystartcharging"}
           moduleName={"MXTT-1"}
         />
 
         {/* fourth module */}
         <BarChartReuseable
-          getRequestBatteryLevel={
-            "http://localhost:4000/api/moduleTwobatterylevel"
-          }
-          postRequestResetBatteryLevel={
-            "http://localhost:4000/api/moudleTwoBatterystartcharging"
-          }
+          getRequestBatteryLevel={"/api/moduleTwobatterylevel"}
+          postRequestResetBatteryLevel={"/api/moudleTwoBatterystartcharging"}
           moduleName={"MTXD-15-2"}
         />
       </div>
