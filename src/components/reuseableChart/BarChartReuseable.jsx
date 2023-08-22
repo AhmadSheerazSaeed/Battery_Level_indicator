@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import axios from "axios";
-import barChart1CSS from "./barChart1.module.css";
+import barChart1CSS from "./BarChartReuseable.module.css";
+import PropTypes from "prop-types";
 
-const BarChart1 = () => {
+const BarChartReuseable = ({
+  getRequestBatteryLevel,
+  postRequestResetBatteryLevel,
+  moduleName,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState(null);
 
   const [options, setObject] = useState({
     chart: {
+      // chart type provided by the user
       id: "basic-bar",
     },
     xaxis: {
@@ -32,11 +38,10 @@ const BarChart1 = () => {
   ]);
 
   // data fetch from server
+  //   the get url request would be frovided
   const fetchedBatteryLevel = async () => {
     try {
-      const batteryLevelFromApi = await axios.get(
-        "http://localhost:4000/api/batterylevel"
-      );
+      const batteryLevelFromApi = await axios.get(getRequestBatteryLevel);
 
       const newBatteryLevel = batteryLevelFromApi.data.battery_level;
 
@@ -53,10 +58,11 @@ const BarChart1 = () => {
     }
   };
 
+  //   post request provided
   // start charging the battery
   const handleStartCharging = async () => {
     try {
-      await axios.post("http://localhost:4000/api/batterystartcharging");
+      await axios.post(postRequestResetBatteryLevel);
     } catch (error) {
       setErrors(error);
     }
@@ -90,7 +96,8 @@ const BarChart1 = () => {
 
   return (
     <div className={barChart1CSS.wrapper}>
-      <h1 className={barChart1CSS.headingOne}>Module 1</h1>
+      {/* the name of the module would be provided */}
+      <h1 className={barChart1CSS.headingOne}>{moduleName}</h1>
       <Chart
         options={options}
         series={series}
@@ -107,4 +114,10 @@ const BarChart1 = () => {
   );
 };
 
-export default BarChart1;
+BarChartReuseable.propTypes = {
+  getRequestBatteryLevel: PropTypes.string.isRequired,
+  postRequestResetBatteryLevel: PropTypes.string.isRequired,
+  moduleName: PropTypes.string.isRequired,
+};
+
+export default BarChartReuseable;

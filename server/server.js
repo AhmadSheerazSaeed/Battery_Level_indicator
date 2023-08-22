@@ -12,10 +12,6 @@ app.use(express.json());
 
 const portNumber = process.env.PORT;
 
-// app.get("/batterylevel", (req, res) => {
-//   return res.status(200).json({ battery_level: 50 });
-// });
-
 app.use("/api", batteryRouter);
 
 app.listen(portNumber, (req, res) => {
