@@ -34,9 +34,7 @@ const BarChart1 = () => {
   // data fetch from server
   const fetchedBatteryLevel = async () => {
     try {
-      const batteryLevelFromApi = await axios.get(
-        "http://localhost:4000/api/batterylevel"
-      );
+      const batteryLevelFromApi = await axios.get("/api/batterylevel");
 
       const newBatteryLevel = batteryLevelFromApi.data.battery_level;
 
@@ -56,7 +54,7 @@ const BarChart1 = () => {
   // start charging the battery
   const handleStartCharging = async () => {
     try {
-      await axios.post("http://localhost:4000/api/batterystartcharging");
+      await axios.post("/api/batterystartcharging");
     } catch (error) {
       setErrors(error);
     }
